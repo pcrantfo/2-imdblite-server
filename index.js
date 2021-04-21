@@ -56,3 +56,16 @@ app.use((err, req, res, next) => {
     res.status(500).send('Something broke!');
 });
 
+// GET requests
+app.get('/', (req, res) => {
+    res.send(`You've chosen your movie database wisely.`);
+});
+
+app.get('/movies', (req, res) => {
+    res.json(topMovies);
+});
+
+// listen for requests
+app.listen(8080, () => {
+    console.log('Your app is listening on port 8080.');
+});
