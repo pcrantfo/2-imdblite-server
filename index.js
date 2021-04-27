@@ -89,6 +89,8 @@ app.use(morgan('common'));
 
 app.use(express.static('public'));
 
+app.use(bodyParser.json());
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
@@ -99,9 +101,119 @@ app.get('/', (req, res) => {
     res.send(`You've chosen your movie database wisely.`);
 });
 
-app.get('/movies', (req, res) => {
-    res.json(topMovies);
+app.get('/documentation', (req, res) => {
+    res.sendFile('public/documentation.html', { root: __dirname });
 });
+
+// Gets info about all movies
+app.get('/movies', (req, res) => {
+    res.json(movies);
+});
+
+// Get info about all directors
+app.get('/directors', (req, res) => {
+    res.json(directors);
+});
+
+// Get info about all users
+app.get('/users', (req, res) => {
+    res.json(users);
+});
+
+// Gets info about a single movie, by title
+app.get('/movies/:title', (req, res) => {
+    res.json(movies.find((movie) => {
+        return movie.title === req.params.title
+    }));
+});
+
+// Gets movie genre by title
+app.get('/movies/:title/genre', (req, res) => {
+    let movie = movies.find((movie) => {
+        return movie.title === req.params.title
+    });
+    if (movie) {
+        const genres = movie.genre.join(', ');
+        res.status(201).send(`${req.params.title} belongs to the ${genres} genre.`);
+    } else {
+        res.status(404).send(`Movie with the title ${req.params.title} was not found.`);
+    }
+});
+
+// Get data about a director
+app.get('/directors/:name', (req, res) => {
+    res.json(directors.find((director) => {
+        return director.name === req.params.name
+    }));
+});
+
+// Register a new user
+app.post('/users', (req, res) => {
+    const newUser = req.body;
+
+    if (!newUser.name) {
+        const message = 'Missing new user name in request body.';
+        res.status(400).send(message);
+    } else {
+        newUser.id = uuid.v4();
+        newUser.favorites = [];
+        users.push(newUser);
+        res.status(201).send(newUser);
+    }
+});
+
+// Update a user's username
+app.put('/users/:name/:username', (req, res) => {
+    let user = users.find((user) => {
+        return user.name === req.params.name
+    });
+
+    if (user) {
+        user.username = req.params.username;
+        res.status(201).send(`${user.name} has changed their username to ${req.params.username}.`);
+    } else {
+        res.status(400).send(`${req.params.name} was not found in the list of users.`);
+    }
+});
+
+// Add a movie to a user's list of favorites
+app.put('/users/:name/:movie/favorites', (req, res) => {
+    let user = users.find((user) => {
+        return user.name === req.params.name
+    });
+    
+    if (user) {
+        res.status(201).send(`${user.name} has added ${req.params.movie} to their list of favorites.`);
+    } else {
+        res.status(400).send(`${req.params.name} was not found in the list of users.`);
+    }
+});
+
+// Remove a movie from a user's list of favorites
+app.delete('/users/:name/:movie/favorites', (req, res) => {
+    let user = users.find((user) => {
+        return user.name === req.params.name
+    });
+    
+    if (user) {
+        res.status(201).send(`${user.name} has removed ${req.params.movie} from their list of favorites.`);
+    } else {
+        res.status(400).send(`${req.params.name} was not found in the list of users.`);
+    }
+});
+
+// Deregister a user by email
+app.delete('/users/:name/:email', (req, res) => {
+    let user = users.find((user) => {
+        return user.email === req.params.email && user.name === req.params.name
+    });
+
+    if (user) {
+        res.status(201).send(`The user whose email is ${user.email} has been deregistered.`);
+    } else {
+        res.status(400).send(`${req.params.name} or ${req.params.email} are not valid user entries.`);
+    }
+})
 
 // listen for requests
 app.listen(8080, () => {
