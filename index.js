@@ -5,10 +5,15 @@ const express = require('express'),
 
 const app = express();
 
-const topMovies = [
+const movies = [
     {
-        title: 'Lord of the Rings: Fellowship of the Ring',
-        director: 'Peter Jackson'
+        // title: 'Lord of the Rings: Fellowship of the Ring',
+        title: 'Lord',
+        description: 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.',
+        genre: ['action', 'adventure', 'drama'],
+        director: 'Peter Jackson',
+        imgURL: 'https://www.imdb.com/title/tt0120737/mediaviewer/rm3592958976?ref_=tt_ov_i',
+        featured: 'yes'
     },
     {
         title: 'Lord of the Rings: The Two Towers',
@@ -45,6 +50,37 @@ const topMovies = [
     {
         title: 'Spaceballs',
         director: 'Mel Brooks'
+    }
+];
+
+const directors = [
+    {
+        id: 1,
+        name: 'Peter Jackson',
+        bio: 'Blah blah blah',
+        birthYear: '10/31/1961',
+        deathYear: 'N/A'
+    },
+    {
+        id: 2,
+        name: 'Taika Waititi',
+        bio: 'Blah blah blah',
+        birthYear: '09/16/1975',
+        deathYear: 'N/A'
+    }
+];
+
+const users = [
+    {
+        id: 1,
+        name: 'Example Name',
+        username: 'example',
+        email: 'example@gmail.com',
+        password: 'password',
+        birthDate: '1/1/1994',
+        favorites: {
+            listOfMovies: 'here'
+        }
     }
 ];
 
