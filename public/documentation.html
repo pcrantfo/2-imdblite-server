@@ -4,10 +4,124 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Movie API</title>
+        <link rel="stylesheet" href="./css/styles.css" type="text/css">
     </head>
     <body>
-        <p>
+        <h1>Movie API (Name TBD)</h1>
+        <p><em>
             This web application will allow users to access information about different movies, directors and genres. They will be able to sign up, and create a list of their favorite movies.
-        </p>
+        </em></p>
+        <h2>Endpoints</h2>
+        <table class="endpoints">
+            <thead>
+                <tr>
+                    <th><h3>Business Logic</h3></th>
+                    <th><h3>URL</h3></th>
+                    <th><h3>HTTP Method</h3></th>
+                    <th><h3>Request body data format</h3></th>
+                    <th><h3>Response body data format</h3></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Get a list of movies</td>
+                    <td>/movies</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON object holding data about all movies</td>
+                </tr>
+                <tr>
+                    <td>Get data about a single movie by title</td>
+                    <td>/movies/[title]</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON object holding data about a single movie, containing a title, description, genre, director, imgURL and whether it is featured. Example:<br><br>
+                        {<br>
+                        title: 'Lord of the Rings: Fellowship of the Ring',<br>
+                        description: 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.',<br>
+                        genre: ['action', 'adventure', 'drama'],<br>
+                        director: 'Peter Jackson',<br>
+                        imgURL: 'https://www.imdb.com/title/tt0120737/mediaviewer/rm3592958976?ref_=tt_ov_i',<br>
+                        featured: 'yes'<br>
+                        }<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Return data about a genre by title</td>
+                    <td>/movies/[title]/genre</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A text message indicating the movie's genre</td>
+                </tr>
+                <tr>
+                    <td>Return data about a director</td>
+                    <td>/directors/[name]</td>
+                    <td>GET</td>
+                    <td>None</td>
+                    <td>A JSON obkect holding data about a single director, containing an ID, a name, a bio, a birth year and a death year (if applicable). Example:<br><br>
+                        {<br>
+                            id: 1,<br>
+                            name: 'Peter Jackson',<br>
+                            bio: 'Blah blah blah',<br>
+                            birthYear: '10/31/1961',<br>
+                            deathYear: 'N/A'<br>
+                        }<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Register a new user</td>
+                    <td>/users</td>
+                    <td>POST</td>
+                    <td>A JSON object holding data about the user to add, structured like:<br><br>
+                        {<br>
+                        "name": "Example Name",<br>
+                        "username": "example",<br>
+                        "email": "example@gmail.com",<br>
+                        password: "password",<br>
+                        "birthDate": "1/1/1994"<br>
+                        }<br>
+                    </td>
+                    <td>A JSON object holding data about the user that was added, including an ID and an empty list of favorite movies (to be updated later):<br><br>
+                        {<br>
+                            name: 'Example Name',<br>
+                            username: 'example',<br>
+                            email: 'example@gmail.com',<br>
+                            password: 'password',<br>
+                            birthDate: '1/1/1994',<br>
+                            id: 1,<br>
+                            favorites: []<br>
+                        }<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Allow users to update their user info.</td>
+                    <td>/users/[name]/[username]</td>
+                    <td>PUT</td>
+                    <td>None</td>
+                    <td>A text message indicating the username has been updated.</td>
+                </tr>
+                <tr>
+                    <td>Add a movie to a user's list of favorites.</td>
+                    <td>/users/[name]//[movie]/favorites</td>
+                    <td>PUT</td>
+                    <td>None</td>
+                    <td>A text message indicating the movie was added to the users favorites.</td>
+                </tr>
+                <tr>
+                    <td>Remove a movie from a user's list of favorites.</td>
+                    <td>/users/[name]/[movie]/favorites</td>
+                    <td>DELETE</td>
+                    <td>None</td>
+                    <td>A text message indicating the movie was removed.</td>
+                </tr>
+                <tr>
+                    <td>Deregister a user by email.</td>
+                    <td>/users/[name]/[email]</td>
+                    <td>DELETE</td>
+                    <td>None</td>
+                    <td>A text message indicating the user email has been removed.</td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>

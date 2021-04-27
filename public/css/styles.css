@@ -1,0 +1,19 @@
+.endpoints {
+    border-collapse: collapse;
+    border: 2px solid black;
+    text-align: left
+}
+
+.endpoints td,
+.endpoints th {
+    padding: 10px;
+    border-right: 1px dashed black;
+}
+
+.endpoints thead {
+    border-bottom: 2px solid black;
+}
+
+.endpoints tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
