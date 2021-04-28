@@ -53,6 +53,21 @@ const movies = [
     }
 ];
 
+const genres = [
+    {
+        name: 'action',
+        description: 'Shoot shoot bam bam Bruce Willis time.'
+    },
+    {
+        name: 'adventure',
+        description: `Woah woah run run crap we're lost.`
+    },
+    {
+        name: 'drama',
+        description: 'Drama. Is.'
+    }
+];
+
 const directors = [
     {
         id: 1,
@@ -128,15 +143,14 @@ app.get('/movies/:title', (req, res) => {
 });
 
 // Gets movie genre by title
-app.get('/movies/:title/genre', (req, res) => {
-    let movie = movies.find((movie) => {
-        return movie.title === req.params.title
+app.get('/genres/:name', (req, res) => {
+    let genre = genres.find((genre) => {
+        return genre.name === req.params.name
     });
-    if (movie) {
-        const genres = movie.genre.join(', ');
-        res.status(201).send(`${req.params.title} belongs to the ${genres} genre.`);
+    if (genre) {
+        res.status(201).send(`The '${req.params.name}' genre's description is: ${genre.description}`);
     } else {
-        res.status(404).send(`Movie with the title ${req.params.title} was not found.`);
+        res.status(404).send(`The '${req.params.name}' genre was not found.`);
     }
 });
 
