@@ -1,0 +1,5 @@
+movies: ID, title, description, genreID->, directorID->, imgURL, featured
+director: ID, name, bio, birthYear, deathYear
+genre: ID, name, description
+users: ID, username, password, email, birthday
+users-movies: userMovieID, userID->, movieID->
