@@ -7,10 +7,9 @@ const app = express();
 
 const movies = [
     {
-        // title: 'Lord of the Rings: Fellowship of the Ring',
-        title: 'Lord',
+        title: 'Lord of the Rings: Fellowship of the Ring',
         description: 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.',
-        genre: ['action', 'adventure', 'drama'],
+        genre: 'adventure',
         director: 'Peter Jackson',
         imgURL: 'https://www.imdb.com/title/tt0120737/mediaviewer/rm3592958976?ref_=tt_ov_i',
         featured: 'yes'
