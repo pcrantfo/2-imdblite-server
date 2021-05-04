@@ -1,4 +1,4 @@
-let movies = [
+const movies = [
     {
         title: 'Lord of the Rings: Fellowship of the Ring',
         description: 'A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.',
@@ -179,7 +179,7 @@ let movies = [
 
 db.movies.insert(movies);
 
-let users = [
+const users = [
     {
         name: 'Peyton Crantford',
         username: 'pcranfrd',
@@ -229,9 +229,7 @@ let users = [
         email: 'aucrouch@gmail.com',
         birthDate: new Date('1995-07-05'),
         favorites: [
-            ObjectId("608b02d0b3346680783e3bd1"),
-            ObjectId("608b02d0b3346680783e3bd3"),
-            ObjectId("608b02d0b3346680783e3bd4")
+            
         ]
     },
     {
