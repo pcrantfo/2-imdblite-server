@@ -47,20 +47,19 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Return data about a genre by title</td>
-                    <td>/genres/[name]</td>
+                    <td>Return data about a genre by name</td>
+                    <td>/movies/genre/[name]</td>
                     <td>GET</td>
                     <td>None</td>
                     <td>A text message indicating the genre's description</td>
                 </tr>
                 <tr>
                     <td>Return data about a director</td>
-                    <td>/directors/[name]</td>
+                    <td>/movies/director/[name]</td>
                     <td>GET</td>
                     <td>None</td>
                     <td>A JSON obkect holding data about a single director, containing an ID, a name, a bio, a birth year and a death year (if applicable). Example:<br><br>
                         {<br>
-                            id: 1,<br>
                             name: 'Peter Jackson',<br>
                             bio: 'Blah blah blah',<br>
                             birthYear: '10/31/1961',<br>
@@ -77,11 +76,11 @@
                         "name": "Example Name",<br>
                         "username": "example",<br>
                         "email": "example@gmail.com",<br>
-                        password: "password",<br>
+                        "password": "password",<br>
                         "birthDate": "1/1/1994"<br>
                         }<br>
                     </td>
-                    <td>A JSON object holding data about the user that was added, including an ID and an empty list of favorite movies (to be updated later):<br><br>
+                    <td>A JSON object holding data about the user that was added, including an ID and a list of favorite movies (to be updated later):<br><br>
                         {<br>
                             name: 'Example Name',<br>
                             username: 'example',<br>
@@ -97,26 +96,64 @@
                     <td>Allow users to update their user info.</td>
                     <td>/users/[name]/[username]</td>
                     <td>PUT</td>
-                    <td>None</td>
-                    <td>A text message indicating the username has been updated.</td>
+                    <td>A JSON object holding data about the user to update, structured like:<br><br>
+                        {<br>
+                        "name": "Example Name",<br>
+                        "username": "example",<br>
+                        "email": "example@gmail.com",<br>
+                        "password": "password",<br>
+                        "birthDate": "1/1/1994"<br>
+                        }<br>
+                    </td>
+                    <td>A JSON object holding data about the user that was updated:<br><br>
+                        {<br>
+                            name: 'Example Name',<br>
+                            username: 'example',<br>
+                            email: 'example@gmail.com',<br>
+                            password: 'password',<br>
+                            birthDate: '1/1/1994',<br>
+                            id: 1,<br>
+                            favorites: []<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr>
                     <td>Add a movie to a user's list of favorites.</td>
-                    <td>/users/[name]//[movie]/favorites</td>
+                    <td>/users/[username]/movies/[movieID]</td>
                     <td>PUT</td>
                     <td>None</td>
-                    <td>A text message indicating the movie was added to the users favorites.</td>
+                    <td>A JSON object holding data about the user that was updated:<br><br>
+                        {<br>
+                            name: 'Example Name',<br>
+                            username: 'example',<br>
+                            email: 'example@gmail.com',<br>
+                            password: 'password',<br>
+                            birthDate: '1/1/1994',<br>
+                            id: 1,<br>
+                            favorites: []<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr>
                     <td>Remove a movie from a user's list of favorites.</td>
-                    <td>/users/[name]/[movie]/favorites</td>
+                    <td>/users/[username]/movies/[movieID]</td>
                     <td>DELETE</td>
                     <td>None</td>
-                    <td>A text message indicating the movie was removed.</td>
+                    <td>A JSON object holding data about the user that was updated:<br><br>
+                        {<br>
+                            name: 'Example Name',<br>
+                            username: 'example',<br>
+                            email: 'example@gmail.com',<br>
+                            password: 'password',<br>
+                            birthDate: '1/1/1994',<br>
+                            id: 1,<br>
+                            favorites: []<br>
+                        }<br>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Deregister a user by email.</td>
-                    <td>/users/[name]/[email]</td>
+                    <td>Deregister a user by username.</td>
+                    <td>/users/[username]</td>
                     <td>DELETE</td>
                     <td>None</td>
                     <td>A text message indicating the user email has been removed.</td>
