@@ -129,8 +129,22 @@ passport.authenticate('jwt', { session: false }),
 
 // Register a new user
 app.post('/users',
-    passport.authenticate('jwt', { session: false }), 
-    (req, res) => {
+[
+    check('username', 'Username is required.').isLength({min: 5}),
+    check('username', 'Username contains non alphanumeric characters — not allowed.').isAlphanumeric(),
+    check('password', 'Password is required.').not().isEmpty(),
+    check('email', 'Email does not appear to be validated.').isEmail()
+],
+passport.authenticate('jwt', { session: false }), 
+(req, res) => {
+    
+    let errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = users.hashPassword(req.body.password);
     users.findOne({ username: req.body.username })
     .then((user) => {
         if (user) {
@@ -140,7 +154,7 @@ app.post('/users',
                 .create({
                     name: req.body.name,
                     username: req.body.username, 
-                    password: req.body.password,
+                    password: hashedPassword,
                     email: req.body.email,
                     birthDate: req.body.birthday
                 })
@@ -159,14 +173,28 @@ app.post('/users',
 
 // Update a user's username
 app.put('/users/:username', 
+[
+    check('username', 'Username is required.').isLength({min: 5}),
+    check('username', 'Username contains non alphanumeric characters — not allowed.').isAlphanumeric(),
+    check('password', 'Password is required.').not().isEmpty(),
+    check('email', 'Email does not appear to be validated.').isEmail()
+],
 passport.authenticate('jwt', { session: false }), 
 (req, res) => {
+
+    let errors = validationResult(req);
+
+    if(!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = users.hashPassword(req.body.password);
     users.findOneAndUpdate({ username: req.params.username }, 
     { $set:
         {
             name: req.body.name,
             username: req.body.username,
-            password: req.body.password,
+            password: hashedPassword,
             email: req.body.email,
             birthDate: req.body.birthDate
         }
