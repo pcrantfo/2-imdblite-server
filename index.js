@@ -14,7 +14,11 @@ const { check, validationResult } = require('express-validator');
 const movies = models.movie;
 const users = models.user;
 
-mongoose.connect('mongodb://localhost:27017/IMDBLite', { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
+// Connect to locally stored database
+// mongoose.connect('mongodb://localhost:27017/IMDBLite', { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
+
+// Connect to MongoDB Atlas database
+mongoose.connect(process.env.CONNECTION_URI, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 
