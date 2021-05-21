@@ -93,6 +93,23 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Login</td>
+                    <td>/login</td>
+                    <td>POST</td>
+                    <td>A key-value paramaters object including username and password.</td>
+                    <td>A JSON object holding data about the user that logged in:<br><br>
+                        {<br>
+                            name: 'Example Name',<br>
+                            username: 'example',<br>
+                            email: 'example@gmail.com',<br>
+                            password: 'password',<br>
+                            birthDate: '1/1/1994',<br>
+                            id: 1,<br>
+                            favorites: []<br>
+                        }<br>
+                    </td>
+                </tr>
+                <tr>
                     <td>Allow users to update their user info.</td>
                     <td>/users/[name]/[username]</td>
                     <td>PUT</td>

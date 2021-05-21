@@ -56,8 +56,7 @@ app.get('/',
     res.send(`You've chosen your movie database wisely. Users must register or login prior to accessing any data endpoints. To see all available endpoints, type '/documentation' to the end of the current URL. Enjoy!`);
 });
 
-app.get('/documentation', 
-passport.authenticate('jwt', { session: false }), 
+app.get('/documentation',
 (req, res) => {
     res.sendFile('public/documentation.html', { root: __dirname });
 });
