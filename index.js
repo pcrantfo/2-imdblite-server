@@ -52,9 +52,8 @@ app.use((err, req, res, next) => {
 
 // GET requests
 app.get('/', 
-passport.authenticate('jwt', { session: false }), 
 (req, res) => {
-    res.send(`You've chosen your movie database wisely.`);
+    res.send(`You've chosen your movie database wisely. Users must register or login prior to accessing any data endpoints. To see all available endpoints, type '/documentation' to the end of the current URL. Enjoy!`);
 });
 
 app.get('/documentation', 
