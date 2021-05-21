@@ -1,0 +1,12 @@
+
+<-- Import data to MongoDB Atlas database -->
+
+mongoimport --uri "mongodb+srv://pcranfrd:Deulofeu46*@pcranfrdcluster0.chbjq.mongodb.net/IMDBLite" --collection users --type json --file imdblite-users.json
+
+<-- Connect terminal (Mongo Shell) to MongoDB Atlas database -->
+
+mongo "mongodb+srv://pcranfrdcluster0.chbjq.mongodb.net/IMDBLite" --username pcranfrd
+
+<-- Push changes to heroku server -->
+
+git push heroku main
