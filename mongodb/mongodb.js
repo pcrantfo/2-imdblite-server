@@ -179,6 +179,56 @@ const movies = [
 
 db.movies.insert(movies);
 
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Two Towers' },
+    { $set: { imgURL: './img/lotr-2-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: The Fellowship of the Ring' },
+    { $set: { imgURL: './img/lotr-1-poster' } }
+)
+
 const users = [
     {
         name: 'Peyton Crantford',
