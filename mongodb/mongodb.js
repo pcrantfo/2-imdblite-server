@@ -181,52 +181,7 @@ db.movies.insert(movies);
 
 db.movies.update(
     { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: '../../img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Two Towers' },
-    { $set: { imgURL: './img/lotr-2-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
-)
-
-db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: './img/lotr-1-poster' } }
+    { $set: { imgURL: 'https://www.imdb.com/title/tt0120737/mediaviewer/rm3592958976?ref_=tt_ov_i' } }
 )
 
 const users = [
