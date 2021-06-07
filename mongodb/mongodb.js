@@ -112,7 +112,7 @@ const movies = [
         featured: false
     },
     {
-        title: 'Thor Ragnarok',
+        title: 'Thor: Ragnarok',
         description: 'Imprisoned on the planet Sakaar, Thor must race against time to return to Asgard and stop Ragnarök, the destruction of his world, at the hands of the powerful and ruthless villain Hela.',
         genre: {
             name: 'action',
@@ -180,8 +180,13 @@ const movies = [
 db.movies.insert(movies);
 
 db.movies.update(
-    { title: 'Lord of the Rings: The Fellowship of the Ring' },
-    { $set: { imgURL: 'https://www.imdb.com/title/tt0120737/mediaviewer/rm3592958976?ref_=tt_ov_i' } }
+    { title: 'Lord of the Rings: The Return of the King' },
+    { $set: { imgURL: 'https://m.media-amazon.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_.jpg' } }
+)
+
+db.movies.update(
+    { title: 'Lord of the Rings: Return of the King' },
+    { $set: { title: 'Lord of the Rings: The Return of the King' } }
 )
 
 const users = [
