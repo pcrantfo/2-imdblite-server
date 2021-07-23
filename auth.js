@@ -2,7 +2,8 @@ const jwtSecret = 'your_jwt_secret'; // This has to be the same key used in the 
 
 const jwt = require('jsonwebtoken'),
   passport = require('passport'),
-  models = require('./models.js');
+  models = require('./models.js'),
+  mongoose = require('mongoose');
 
 require('./passport'); // Your local passport file
 
