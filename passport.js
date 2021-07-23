@@ -3,7 +3,7 @@ const passport = require('passport'),
   models = require('./models.js'),
   passportJWT = require('passport-jwt');
 
-let users = models.user,
+const users = models.user,
   JWTStrategy = passportJWT.Strategy,
   ExtractJWT = passportJWT.ExtractJwt;
 
