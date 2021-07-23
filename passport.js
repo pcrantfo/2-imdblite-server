@@ -22,7 +22,7 @@ passport.use(new LocalStrategy((username, password, callback) => {
       return callback(null, false, { message: 'Incorrect password.' });
     }
 
-    console.log('finished');
+    alert(user);
     return callback(null, user);
   });
 }));
