@@ -8,7 +8,7 @@ const users = models.user,
   ExtractJWT = passportJWT.ExtractJwt;
 
 passport.use(new LocalStrategy((username, password, callback) => {
-  users.findOne({ `"${username}"`: `"${username}"` }, (error, user) => {
+  users.findOne({ "username": `"${username}"` }, (error, user) => {
     if (error) {
       console.log('error');
       return callback(error);
