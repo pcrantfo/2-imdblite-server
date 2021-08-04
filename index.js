@@ -11,10 +11,10 @@ const movies = models.movie;
 const users = models.user;
 
 // Connect to locally stored database
-mongoose.connect('mongodb://localhost:27017/IMDBLite', { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/IMDBLite', { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
 
 // Connect to MongoDB Atlas database
-// mongoose.connect(process.env.CONNECTION_URI, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useFindAndModify: false, useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 
