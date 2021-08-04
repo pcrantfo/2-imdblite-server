@@ -10,7 +10,7 @@ const users = models.user,
 passport.use(new LocalStrategy((username, password, callback) => {
   users.findOne({ username: username }, (error, user) => {
     if (error) {
-      console.error(error);
+      console.log('Bloody hell.');
       return callback(error);
     }
 
